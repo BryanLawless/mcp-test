@@ -1,0 +1,211 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.2.2",
+  "pathMappings": {
+    "@snapflow/api-client": [
+      "packages/api-client/src/index.ts"
+    ],
+    "@snapflow/executor-api-client": [
+      "packages/executor-api-client/src/index.ts"
+    ],
+    "@snapflow/sdk": [
+      "packages/typescript-sdk/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "name": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "test",
+        "serveTargetName": "serve",
+        "devTargetName": "dev",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static",
+        "typecheckTargetName": "typecheck",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "name": "@nx/react/router-plugin",
+      "options": {
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "startTargetName": "start",
+        "watchDepsTargetName": "watch-deps",
+        "buildDepsTargetName": "build-deps",
+        "typecheckTargetName": "typecheck"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [],
+    "projectFileMap": {
+      "api": [
+        {
+          "file": "apps/api/project.json",
+          "hash": "14577176788708809566"
+        },
+        {
+          "file": "apps/api/src/app.module.ts",
+          "hash": "11165346988330062177"
+        },
+        {
+          "file": "apps/api/src/assets/test.html",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/api/src/counting-tool.ts",
+          "hash": "17741310544023399098"
+        },
+        {
+          "file": "apps/api/src/main.ts",
+          "hash": "15917112093004395788"
+        },
+        {
+          "file": "apps/api/tsconfig.app.json",
+          "hash": "15594590355379871627"
+        },
+        {
+          "file": "apps/api/tsconfig.json",
+          "hash": "3490524966360018312"
+        },
+        {
+          "file": "apps/api/tsconfig.spec.json",
+          "hash": "1804143651144817735"
+        },
+        {
+          "file": "apps/api/webpack.config.js",
+          "hash": "13826002017513539848"
+        }
+      ],
+      "snapflow": [
+        {
+          "file": ".nx/cache/run.json",
+          "hash": "10127590021673542973"
+        },
+        {
+          "file": ".nx/cache/terminalOutputs/8924378333917807712",
+          "hash": "8714727935180312587"
+        },
+        {
+          "file": ".nx/cache/terminalOutputs/9818759815488603521",
+          "hash": "17595400514911061229"
+        },
+        {
+          "file": ".nx/workspace-data/b8e2ac886e8744478c4c4eaa32b2c61f.db-wal",
+          "hash": "1749011672347982553"
+        },
+        {
+          "file": ".nx/workspace-data/d/daemon.log",
+          "hash": "10933993941753542018"
+        },
+        {
+          "file": ".nx/workspace-data/eslint-2654242865465226088.hash",
+          "hash": "1389868326933519382"
+        },
+        {
+          "file": ".nx/workspace-data/file-map.json",
+          "hash": "6157792344277028137"
+        },
+        {
+          "file": ".nx/workspace-data/project-graph.json",
+          "hash": "14559676708947051851"
+        },
+        {
+          "file": ".nx/workspace-data/react-router-8507840353650169656.hash",
+          "hash": "1389868326933519382"
+        },
+        {
+          "file": ".nx/workspace-data/source-maps.json",
+          "hash": "4131932505814592251"
+        },
+        {
+          "file": ".nx/workspace-data/vite-9347777721732807074.hash",
+          "hash": "1389868326933519382"
+        },
+        {
+          "file": ".nx/workspace-data/webpack-5621830741124012108.hash",
+          "hash": "9005773925586122762"
+        },
+        {
+          "file": "biome.json",
+          "hash": "14372039390761748182"
+        },
+        {
+          "file": "bun.lock",
+          "hash": "9057454715150468160"
+        },
+        {
+          "file": "dist/apps/api/assets/test.html",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "dist/apps/api/main.js",
+          "hash": "1561132253934333746"
+        },
+        {
+          "file": "dist/apps/api/main.js.map",
+          "hash": "11185479660884047884"
+        },
+        {
+          "file": "node_modules/cpu-features/build/Release/.deps/Release/cpufeatures.node.d",
+          "hash": "16994881699096128283"
+        },
+        {
+          "file": "node_modules/cpu-features/build/Release/.deps/Release/obj.target/cpufeatures.node.d",
+          "hash": "4012383542301024867"
+        },
+        {
+          "file": "node_modules/cpu-features/build/Release/.deps/Release/obj.target/cpufeatures/src/binding.o.d",
+          "hash": "7904129447556346880"
+        },
+        {
+          "file": "node_modules/cpu-features/build/Release/cpufeatures.node",
+          "hash": "1984584996154659197"
+        },
+        {
+          "file": "node_modules/cpu-features/build/Release/obj.target/cpufeatures.node",
+          "hash": "1984584996154659197"
+        },
+        {
+          "file": "node_modules/cpu-features/build/Release/obj.target/cpufeatures/src/binding.o",
+          "hash": "7462239518176855170"
+        },
+        {
+          "file": "nx.json",
+          "hash": "14141900999917680791"
+        },
+        {
+          "file": "package.json",
+          "hash": "2327107867990339691"
+        },
+        {
+          "file": "project.json",
+          "hash": "3347318343129315613"
+        },
+        {
+          "file": "tsconfig.base.json",
+          "hash": "8486221541553747676"
+        }
+      ]
+    }
+  }
+}

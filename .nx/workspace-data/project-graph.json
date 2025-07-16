@@ -1,0 +1,355 @@
+{
+  "nodes": {
+    "api": {
+      "name": "api",
+      "type": "app",
+      "data": {
+        "root": "apps/api",
+        "projectType": "application",
+        "metadata": {},
+        "targets": {
+          "build": {
+            "executor": "@nx/webpack:webpack",
+            "options": {
+              "outputPath": "dist/apps/api",
+              "main": "apps/api/src/main.ts",
+              "tsConfig": "apps/api/tsconfig.app.json",
+              "target": "node",
+              "compiler": "tsc",
+              "sourceMap": true,
+              "webpackConfig": "apps/api/webpack.config.js",
+              "assets": [
+                {
+                  "input": "apps/api/src/assets",
+                  "glob": "**/*",
+                  "output": "./assets/"
+                }
+              ]
+            },
+            "configurations": {
+              "production": {
+                "optimization": true,
+                "extractLicenses": true,
+                "inspect": false
+              }
+            },
+            "parallelism": true
+          },
+          "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "dependsOn": [
+              "build"
+            ],
+            "options": {
+              "buildTarget": "api:build",
+              "runBuildTargetDependencies": false,
+              "watch": true
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "api:build:development"
+              },
+              "production": {
+                "buildTarget": "api:build:production"
+              }
+            },
+            "parallelism": true
+          },
+          "preview": {
+            "continuous": true,
+            "options": {
+              "cwd": "apps/api",
+              "args": [
+                "--node-env=production"
+              ],
+              "command": "webpack-cli serve"
+            },
+            "metadata": {
+              "technologies": [
+                "webpack"
+              ],
+              "description": "Starts Webpack dev server in production mode",
+              "help": {
+                "command": "bun webpack-cli serve --help",
+                "example": {
+                  "options": {
+                    "args": [
+                      "--client-progress",
+                      "--history-api-fallback "
+                    ]
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve-static": {
+            "continuous": true,
+            "dependsOn": [
+              "build"
+            ],
+            "executor": "@nx/web:file-server",
+            "options": {
+              "buildTarget": "build",
+              "spa": true
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "build-deps": {
+            "dependsOn": [
+              "^build"
+            ],
+            "configurations": {},
+            "options": {},
+            "parallelism": true,
+            "executor": "nx:noop"
+          },
+          "watch-deps": {
+            "continuous": true,
+            "dependsOn": [
+              "build-deps"
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "bun nx watch --projects api --includeDependentProjects -- bun nx build-deps api"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "openapi": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "bun ts-node apps/api/src/generate-openapi.ts -o dist/apps/api/openapi.json",
+              "env": {
+                "TS_NODE_PROJECT": "apps/api/tsconfig.app.json",
+                "NODE_OPTIONS": "--require tsconfig-paths/register",
+                "SKIP_CONNECTIONS": "true"
+              }
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "format": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "cd apps/api && bun run format"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "api",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/api/src",
+        "tags": [],
+        "implicitDependencies": []
+      }
+    },
+    "snapflow": {
+      "name": "snapflow",
+      "type": "lib",
+      "data": {
+        "root": ".",
+        "name": "snapflow",
+        "tags": [
+          "npm:private"
+        ],
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "format",
+              "lint",
+              "lint:fix",
+              "build",
+              "build:production",
+              "serve",
+              "serve:skip-runner",
+              "serve:skip-proxy",
+              "serve:production",
+              "db:generate",
+              "db:push",
+              "openapi:generate",
+              "generate:api-client"
+            ]
+          },
+          "js": {
+            "packageName": "snapflow",
+            "isInPackageManagerWorkspaces": false
+          }
+        },
+        "targets": {
+          "format": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "format"
+            },
+            "metadata": {
+              "scriptContent": "biome format .",
+              "runCommand": "bun run format -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "lint"
+            },
+            "metadata": {
+              "scriptContent": "biome check .",
+              "runCommand": "bun run lint -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint:fix": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "lint:fix"
+            },
+            "metadata": {
+              "scriptContent": "biome check . --write",
+              "runCommand": "bun run lint:fix -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "build"
+            },
+            "metadata": {
+              "scriptContent": "nx run-many --target=build --all --configuration=development",
+              "runCommand": "bun run build -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "build:production": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "build:production"
+            },
+            "metadata": {
+              "scriptContent": "nx run-many --target=build --all --configuration=production",
+              "runCommand": "bun run build:production -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "serve"
+            },
+            "metadata": {
+              "scriptContent": "nx run-many --target=serve --all --exclude=daemon --configuration=development",
+              "runCommand": "bun run serve -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve:skip-runner": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "serve:skip-runner"
+            },
+            "metadata": {
+              "scriptContent": "nx run-many --target=serve --all --exclude=runner,daemon --configuration=development",
+              "runCommand": "bun run serve:skip-runner -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve:skip-proxy": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "serve:skip-proxy"
+            },
+            "metadata": {
+              "scriptContent": "nx run-many --target=serve --all --exclude=proxy,daemon --configuration=development",
+              "runCommand": "bun run serve:skip-proxy -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve:production": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "serve:production"
+            },
+            "metadata": {
+              "scriptContent": "nx run-many --target=serve --all --exclude=daemon  --configuration=production",
+              "runCommand": "bun run serve:production -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "db:generate": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "db:generate"
+            },
+            "metadata": {
+              "scriptContent": "cd apps/api && bunx ts-node -P ./tsconfig.json -r tsconfig-paths/register ../../node_modules/typeorm/cli.js migration:generate -d ./src/data-source.ts ./src/migrations/migration",
+              "runCommand": "bun run db:generate -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "db:push": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "db:push"
+            },
+            "metadata": {
+              "scriptContent": "cd apps/api && bunx ts-node -P ./tsconfig.json -r tsconfig-paths/register ../../node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
+              "runCommand": "bun run db:push -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "openapi:generate": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "openapi:generate"
+            },
+            "metadata": {
+              "scriptContent": "nx run-many --target=openapi --all",
+              "runCommand": "bun run openapi:generate -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "generate:api-client": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "generate:api-client"
+            },
+            "metadata": {
+              "scriptContent": "bun run openapi:generate && nx run-many --target=generate:api-client --all",
+              "runCommand": "bun run generate:api-client -- undefined"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "$schema": "node_modules/nx/schemas/project-schema.json",
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "api": [],
+    "snapflow": []
+  },
+  "version": "6.0",
+  "errors": [],
+  "computedAt": 1752684294904
+}

@@ -1,0 +1,58 @@
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 2.89 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (1d03f857fc7cc278)
+[36mType-checking in progress...[39m
+[1m[31mDebugger listening on ws://localhost:9229/5f44cc83-a9d3-4b19-bc1c-5095da0d0cbf[39m[22m
+[1m[31mDebugger listening on ws://localhost:9229/5f44cc83-a9d3-4b19-bc1c-5095da0d0cbf[39m[22m
+[1m[31mFor help, see: https://nodejs.org/en/docs/inspector[39m[22m
+[1m[31m[39m[22m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +9ms[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDiscoveryModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMcpModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSseController {/}:[39m[38;5;3m +3ms[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sse, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/messages, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[SsePingService] [39m[32mStarting SSE ping service (interval: 30000ms)[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[SsePingService] [39m[32mInitializing SSE ping service[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [95m  DEBUG[39m [38;5;3m[McpRegistryService] [39m[95mDiscovering tools, resources, and prompts for module: AppModule[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [95m  DEBUG[39m [38;5;3m[McpRegistryService] [39m[95mDiscovered tools: class CountingTool {
+    constructor() { }
+    async countCharacters({ text, character }, context) {
+        let count = 0;
+        // Simple counting logic that's 100% accurate
+        for (let i = 0; i < text.length; i++) {
+            if (text[i] === character) {
+                count++;
+            }
+        }
+        return {
+            content: [
+                {
+                    type: "text",
+                    text: `There are ${count} occurrences of '${character}' in the text.`,
+                },
+            ],
+        };
+    }
+}.countCharacters[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [95m  DEBUG[39m [38;5;3m[McpRegistryService] [39m[95mDiscovered resources: none[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [95m  DEBUG[39m [38;5;3m[McpRegistryService] [39m[95mDiscovered prompts: none[39m
+[32m[Nest] 1393003  - [39m07/16/2025, 10:41:08 AM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +0ms[39m
+[32mNo errors found.[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:23 AM [95m  DEBUG[39m [38;5;3m[SseController] [39m[95mBuilt MCP capabilities:[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:23 AM [95m  DEBUG[39m [38;5;3m[SseController] [39mObject(1) {
+  tools: {
+    listChanged: [33mtrue[39m
+  }
+}
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:23 AM [95m  DEBUG[39m [38;5;3m[SsePingService] [39m[95mSSE connection registered: c3ca7bf1-4b1d-48c7-af2e-1d718a722870[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:23 AM [95m  DEBUG[39m [38;5;3m[McpResourcesHandler] [39m[95mNo resources registered, skipping resource handlers[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:23 AM [95m  DEBUG[39m [38;5;3m[McpPromptsHandler] [39m[95mNo prompts registered, skipping prompt handlers[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:23 AM [95m  DEBUG[39m [38;5;3m[McpResourcesHandler] [39m[95mNo resources registered, skipping resource handlers[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:23 AM [95m  DEBUG[39m [38;5;3m[McpPromptsHandler] [39m[95mNo prompts registered, skipping prompt handlers[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:24 AM [95m  DEBUG[39m [38;5;3m[McpResourcesHandler] [39m[95mNo resources registered, skipping resource handlers[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:24 AM [95m  DEBUG[39m [38;5;3m[McpPromptsHandler] [39m[95mNo prompts registered, skipping prompt handlers[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:26 AM [95m  DEBUG[39m [38;5;3m[McpResourcesHandler] [39m[95mNo resources registered, skipping resource handlers[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:26 AM [95m  DEBUG[39m [38;5;3m[McpPromptsHandler] [39m[95mNo prompts registered, skipping prompt handlers[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:41:38 AM [95m  DEBUG[39m [38;5;3m[SsePingService] [39m[95mSending SSE ping to 1 connections[39m
+[95m[Nest] 1393003  - [39m07/16/2025, 10:42:08 AM [95m  DEBUG[39m [38;5;3m[SsePingService] [39m[95mSending SSE ping to 1 connections[39m
