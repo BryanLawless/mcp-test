@@ -6,7 +6,6 @@ import { CountingTool } from "./counting-tool";
     McpModule.forRoot({
       name: "snapflow-mcp",
       version: "0.0.1",
-      transport: McpTransportType.SSE,
     }),
   ],
   providers: [CountingTool],
